@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
-    private userS : AuthService
+    private userS: AuthService
   ) { }
 
   ionViewWillEnter() {
@@ -31,10 +31,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
 
     this.onLoginForm = this.formBuilder.group({
-      'email': [null, Validators.compose([
+      email: [null, Validators.compose([
         Validators.required
       ])],
-      'password': [null, Validators.compose([
+      password: [null, Validators.compose([
         Validators.required
       ])]
     });
@@ -99,7 +99,7 @@ export class LoginPage implements OnInit {
   }
 
 
-  signInGuest(){
+  signInGuest() {
 
     this.userS.anonymous();
 
