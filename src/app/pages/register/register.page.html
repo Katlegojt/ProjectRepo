@@ -24,6 +24,13 @@
           This field is required
         </ion-text>
       </p>
+      <ion-item>
+        <ion-label>Gender</ion-label >
+        <ion-select placeholder="Select One" formControlName="gender"  [(ngModel)]="user.gender">
+          <ion-select-option value="female">Female</ion-select-option>
+          <ion-select-option value="male">Male</ion-select-option>
+        </ion-select>
+      </ion-item>
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
           <ion-icon name="mail" item-start></ion-icon>

@@ -12,11 +12,13 @@
 
 
 <div class="card">
-    <img src="/assets/blur-color-cube-208147-removebg-preview.png" alt="Avatar" style="width:100%">
+    <img src={{img}} alt="Avatar" >
+    
     <div class="container">
-      <h4><b>{{user?.username}}</b></h4>
+      <h3><b>{{user?.username}}</b></h3>
+      <h4>{{user.gender}}</h4>
       <ion-header no-padding>Bio:</ion-header>
-      <ion-item>{{user.Bio}}<ion-fab-button slot="end"><ion-icon name="add"></ion-icon></ion-fab-button> </ion-item>
+     <ion-item> <ion-fab-button slot="end" (click)="openPopover()"><ion-icon name="add"></ion-icon></ion-fab-button></ion-item>
     </div>
   </div>
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
@@ -26,7 +28,7 @@
       <ion-fab-list side="top">
           <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
           <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
-          <ion-fab-button><ion-icon name="logo-instagram"></ion-icon></ion-fab-button>
+          <ion-fab-button><ion-icon (click)="sharingInsta(user.email)" name="logo-instagram"></ion-icon></ion-fab-button>
           
         </ion-fab-list>
         

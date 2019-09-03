@@ -37,6 +37,7 @@ export class AuthService {
             this.db.collection('users').doc(credential.user.uid).set({
               username : user.name,
               email : user.email,
+              gender : user.gender,
               Bio : 'write something about yourself'
             })
            

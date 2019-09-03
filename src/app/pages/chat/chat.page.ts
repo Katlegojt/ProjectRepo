@@ -15,8 +15,9 @@ export class ChatPage implements OnInit {
 
   constructor( private afAuth : AngularFireAuth, public firestore: AngularFirestore) {
 
-    this.uid = localStorage.getItem('userid');
+    // this.uid = localStorage.getItem('userid');
     //this.chatRef = this.firestore.collection('chats').valueChanges();
+    this.uid = this.afAuth.auth.currentUser.uid;
     this.chatRef = this.firestore.collection('chats', ref=>ref.orderBy('Timestamp')).valueChanges();
    }
 

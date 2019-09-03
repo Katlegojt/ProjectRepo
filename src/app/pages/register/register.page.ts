@@ -18,6 +18,7 @@ import { User } from 'src/app/module/user';
 export class RegisterPage implements OnInit {
   public onRegisterForm: FormGroup;
 
+
   user = {} as User
   constructor(
     public navCtrl: NavController,
@@ -45,7 +46,10 @@ export class RegisterPage implements OnInit {
       'password': [null, Validators.compose([
         Validators.required
       ])],
-      
+      'gender': 
+      [null, Validators.compose([
+        Validators.required
+      ])],
       
       
     });

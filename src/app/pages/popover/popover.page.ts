@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-popover',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopoverPage implements OnInit {
 
-  constructor() { }
+  user = {name:'', password:'',
+  gender: '',
+  email: '',
+  bio :''
+
+  };
+  constructor(private navParams : NavParams) { }
 
   ngOnInit() {
+
+    this.user.name = this.navParams.get('username');
   }
 
 }
