@@ -18,7 +18,10 @@ import { PopoverPageModule } from './pages/popover/popover.module';
 
 
 const firebaseConfig = {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3714e345b69c1882c4d52f87228a77b235d1735f
   apiKey: "AIzaSyAcCoAq2Y3y7tMIFxYG7JrvAM16gVWxN4k",
   authDomain: "myproject-e6714.firebaseapp.com",
   databaseURL: "https://myproject-e6714.firebaseio.com",
