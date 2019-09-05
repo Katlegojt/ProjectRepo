@@ -17,7 +17,8 @@
       <span class="name">
         {{chat.Name}}
       </span><br>
-      {{chat.Message}}
+      {{chat.Message}}<br>
+      <label style="text-align: right; background-color: grey ;border-radius:6px 21px 6px"><small>{{chat.Timestamp | date : 'hh:mm' }}</small></label>
     </div>
    </div>
 </ion-content>

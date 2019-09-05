@@ -14,14 +14,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SocialSharing} from '@ionic-native/social-sharing/ngx';
 import { PopoverPageModule } from './pages/popover/popover.module';
-
-
+import { IonicStorageModule} from '@ionic/storage'
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { WebView } from '@ionic-native/ionic-WebView/ngx';
 
 const firebaseConfig = {
-<<<<<<< HEAD
-
-=======
->>>>>>> 3714e345b69c1882c4d52f87228a77b235d1735f
   apiKey: "AIzaSyAcCoAq2Y3y7tMIFxYG7JrvAM16gVWxN4k",
   authDomain: "myproject-e6714.firebaseapp.com",
   databaseURL: "https://myproject-e6714.firebaseio.com",
@@ -39,14 +37,15 @@ const firebaseConfig = {
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
-    PopoverPageModule
+    PopoverPageModule,
+    IonicStorageModule
   ],
     
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    SocialSharing
+    SocialSharing,Camera,File,WebView
   ],
   bootstrap: [AppComponent]
 })

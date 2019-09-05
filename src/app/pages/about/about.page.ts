@@ -56,6 +56,7 @@ this.img = "/assets/img/ms pac.jpg"
     const popover = await this.popover.create({
       component : PopoverPage,
       componentProps :{
+        
 
       }
 

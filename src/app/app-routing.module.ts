@@ -7,6 +7,8 @@ const routes: Routes = [
   { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)},
   { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
+  { path: 'page1', loadChildren: './pages/page1/page1.module#Page1PageModule' },
+ 
 
   
  

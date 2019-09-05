@@ -1,8 +1,10 @@
 
 
 <ion-content>
-  <ion-label position="floating">Enter a short bio of yourself</ion-label>
-<ion-input placeholder="enter somthing" [(ngModel)]="user.bio"></ion-input>
-<ion-button>update</ion-button>
+    <ion-header>Profile of {{user.username}}</ion-header>
+  <ion-item><ion-label>Username: </ion-label><ion-input [(ngModel)]="user.username"></ion-input></ion-item>
+  <ion-item><ion-label>Email: </ion-label><ion-input [(ngModel)]="user.email"></ion-input></ion-item>
+  <ion-item><ion-label>Bio: </ion-label><ion-input [(ngModel)]="user.Bio"></ion-input></ion-item>
+  <ion-button expand="block" (click)="update(user)">update</ion-button>
 
 </ion-content>

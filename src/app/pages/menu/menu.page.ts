@@ -17,7 +17,8 @@ user = {} as User;
 
   pages = [
     {title:'Chat Page', url:'/menu/chat'},
-    {title:'Profile', url:'/menu/about'}
+    {title:'Profile', url:'/menu/about'},
+    {title  :'user-chat' , url:'/menu/user-chat'}
   ]
   email;
   uid;

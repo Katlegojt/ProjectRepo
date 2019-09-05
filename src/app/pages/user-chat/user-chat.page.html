@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>userChat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item *ngFor="let item of list " (click)="updateItem(item)">
+        <ion-label>
+          {{ item.username }}
+      
+        </ion-label>
+      </ion-item>
+</ion-content>

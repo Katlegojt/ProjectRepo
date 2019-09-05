@@ -18,7 +18,7 @@ user = {} as User;
     this.userDoc = this.db.doc<User>('users/'+key);
     return this.userDoc.valueChanges();
   }
-
+//update user Bio
   update(user, key) {
     this.userDoc = this.db.doc<User>('users/'+ key);
     this.userDoc.update(user);

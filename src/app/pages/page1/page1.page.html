@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>chat page</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+     
+   
+  </ion-content>
+  <ion-footer>
+    <ion-item>
+      <ion-input placeholder="messsage...." [(ngModel)]="text"></ion-input>
+      <ion-button (click)="send()" icon-only slot="end">
+        <ion-icon name="send"></ion-icon>
+      </ion-button>
+    </ion-item>
+  
+  </ion-footer>

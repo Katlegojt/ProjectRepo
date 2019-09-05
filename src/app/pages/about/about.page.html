@@ -9,18 +9,19 @@
 
 <ion-content> 
 
-
-
-<div class="card">
-    <img src={{img}} alt="Avatar" >
+    
     
     <div class="container">
-      <h3><b>{{user?.username}}</b></h3>
-      <h4>{{user.gender}}</h4>
-      <ion-header no-padding>Bio:</ion-header>
-     <ion-item> <ion-fab-button slot="end" (click)="openPopover()"><ion-icon name="add"></ion-icon></ion-fab-button></ion-item>
-    </div>
+        <img src={{img}} alt="Avatar" >
+   <h3><b>{{user?.username}}</b></h3>
   </div>
+  
+    <ion-item><ion-label>Email : {{user.email}}</ion-label></ion-item>
+    <ion-item><ion-label>Gender: {{user.gender}}</ion-label></ion-item>
+    <ion-item><ion-label>Bio : {{user.Bio}}</ion-label></ion-item>
+      <ion-fab vertical="center" horizontal="end" slot="fixed">
+      <ion-fab-button  (click)="openPopover()"><ion-icon name="add"></ion-icon></ion-fab-button>
+    </ion-fab>
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
       <ion-fab-button>
         <ion-icon name="share"></ion-icon>
@@ -29,7 +30,6 @@
           <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
           <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
           <ion-fab-button><ion-icon (click)="sharingInsta(user.email)" name="logo-instagram"></ion-icon></ion-fab-button>
-          
         </ion-fab-list>
         
     </ion-fab>

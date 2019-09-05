@@ -21,7 +21,7 @@ export class AuthService {
     try {
     const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(credential => {
       return this.db.collection('users').doc(credential.user.uid).set({
-        username : user.name,
+        username : user.username,
         email : user.email,
       });
     });
@@ -35,15 +35,15 @@ export class AuthService {
         signup(user: User) {
           this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then((credential) => {
             this.db.collection('users').doc(credential.user.uid).set({
-              username : user.name,
+              username : user.username,
               email : user.email,
               gender : user.gender,
-              Bio : 'write something about yourself'
+              Bio : 'Enter a short bio of yourself'
             });
 
             localStorage.setItem('userid', this.afAuth.auth.currentUser.uid);
             this.afAuth.auth.currentUser.updateProfile({
-              displayName : user.name,
+              displayName : user.username,
               photoURL: '',
 
             }).then(() => {
