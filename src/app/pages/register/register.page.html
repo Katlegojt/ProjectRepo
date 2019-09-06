@@ -17,7 +17,7 @@
         <ion-label position="floating">
           Username
         </ion-label>
-        <ion-input color="secondary" type="text" formControlName="fullName" [(ngModel)]="user.name"></ion-input>
+        <ion-input color="secondary" type="text" formControlName="fullName" [(ngModel)]="user.username"></ion-input>
       </ion-item>
       <p ion-text class="text08" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">
         <ion-text color="warning">

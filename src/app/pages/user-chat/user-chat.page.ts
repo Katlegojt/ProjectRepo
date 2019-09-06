@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { User } from 'src/app/module/user';
+import { Key } from 'protractor';
 
 
 @Component({
@@ -11,33 +12,39 @@ import { User } from 'src/app/module/user';
   styleUrls: ['./user-chat.page.scss'],
 })
 export class UserChatPage implements OnInit {
-  user = {}as User;
+  User : User;
   users;
   list
   uid;
   constructor(private afAuth: AngularFireAuth, public firestore: AngularFirestore, private router: Router) { 
 
     this.uid = this.afAuth.auth.currentUser.uid; 
-    this.users = this.firestore.collection('users').snapshotChanges().subscribe(data => {
-      this.list = data.map ( e => {
+    this.users = this.firestore.collection('users').snapshotChanges().subscribe(data =>{
+
+
+      this.list = data.map( e =>{
         return{
+
           key: e.payload.doc.id,
           ...e.payload.doc.data()
-        } as User;
+        } as User
+
       });
-      console.log(this.users);
- 
-     });
- 
+    }
+
+
+
+    )
+   
     
   }
 
   ngOnInit() {
   }
 
-  updateItem(){
+  updateItem(User){
 
-    this.router.navigate(['/page1'], { queryParams: { userID:  this.afAuth.auth.currentUser.uid } });
+    this.router.navigate(['/menu/page1'], { queryParams: {name : User.username, key : User.key} });
 
   }
 

@@ -16,6 +16,7 @@ const routes: Routes = [
       { path: 'chat', loadChildren: '../chat/chat.module#ChatPageModule' },
       { path: 'about', loadChildren: '../about/about.module#AboutPageModule' },
       { path: 'user-chat', loadChildren: '../user-chat/user-chat.module#UserChatPageModule' },
+      { path: 'page1', loadChildren: '../page1/page1.module#Page1PageModule' },
     ]
   }
 ];
