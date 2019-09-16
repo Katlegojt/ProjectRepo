@@ -8,13 +8,15 @@
 </ion-header>
 <ion-list>
   <ion-item *ngFor="let item of list " (click)="updateItem(item)">
-<ion-label>
+    <div *ngIf="item.UserID != uid">
+  
 
-{{ item.username }}{{item.key}}
+        {{ item.username }} Last Seen : {{afAuth.auth.currentUser.metadata.lastSignInTime | date : 'shortTime'}}
 
-</ion-label>
+    </div>
 </ion-item>
 </ion-list>
+
 <ion-content>
  
 </ion-content>

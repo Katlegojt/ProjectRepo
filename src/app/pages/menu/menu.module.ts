@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { MenuPage } from './menu.page';
+import { AuthGuard } from 'src/app/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,10 +14,10 @@ const routes: Routes = [
     component: MenuPage, 
     children:[
 
-      { path: 'chat', loadChildren: '../chat/chat.module#ChatPageModule' },
-      { path: 'about', loadChildren: '../about/about.module#AboutPageModule' },
-      { path: 'user-chat', loadChildren: '../user-chat/user-chat.module#UserChatPageModule' },
-      { path: 'page1', loadChildren: '../page1/page1.module#Page1PageModule' },
+      { path: 'chat', loadChildren: '../chat/chat.module#ChatPageModule' ,canActivate:[AuthGuard ]},
+      { path: 'about', loadChildren: '../about/about.module#AboutPageModule' ,canActivate:[AuthGuard ]},
+      { path: 'user-chat', loadChildren: '../user-chat/user-chat.module#UserChatPageModule',canActivate:[AuthGuard ] },
+      { path: 'page1', loadChildren: '../page1/page1.module#Page1PageModule',canActivate:[AuthGuard ] },
     ]
   }
 ];

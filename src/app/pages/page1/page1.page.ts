@@ -12,7 +12,7 @@ import { User } from 'src/app/module/user';
 export class Page1Page implements OnInit {
   text;
   chatRef;
-  chatRef2;
+ 
   userID;
   name;
   uid;
@@ -20,20 +20,20 @@ export class Page1Page implements OnInit {
   private userDoc: AngularFirestoreDocument<User>;
   constructor(private route: ActivatedRoute,private afAuth: AngularFireAuth, public firestore: AngularFirestore) {
     this.uid = this.afAuth.auth.currentUser.uid;
+    this.chatRef = this.firestore.collection('userChats', ref=> ref.orderBy('Timestamp')).valueChanges();
    // this.chatRef = this.firestore.collection('userChats' ,ref => ref.where("UserID2", "==", this.userID)).valueChanges();
-    
+   this.route.queryParams
+   .subscribe(params => {
+     this.name = params.name;
+     this.userID = params.key;
+     console.log(this.userID, this.name); // popular
+   });
    }
 
  
   ngOnInit() {
-    this.route.queryParams
     
-    .subscribe(params => {
-      this.name = params.name;
-      this.userID = params.key;
-      console.log(this.userID, this.name); // popular
-    });
-   this.chatRef = this.firestore.collection('userChats',ref => ref.orderBy('Timestamp').where("Name", "==", this.name)).valueChanges();
+
    
 }
 

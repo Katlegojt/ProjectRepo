@@ -6,6 +6,9 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {FileChooser} from '@ionic-native/file-chooser/ngx';
+import { File } from '@ionic-native/File/ngx';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,9 +18,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SocialSharing} from '@ionic-native/social-sharing/ngx';
 import { PopoverPageModule } from './pages/popover/popover.module';
 import { IonicStorageModule} from '@ionic/storage'
-import { Camera } from '@ionic-native/Camera/ngx';
-import { File } from '@ionic-native/File/ngx';
 import { WebView } from '@ionic-native/ionic-WebView/ngx';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcCoAq2Y3y7tMIFxYG7JrvAM16gVWxN4k",
@@ -38,14 +40,15 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
     PopoverPageModule,
-    IonicStorageModule
+    IonicStorageModule,
+    
   ],
     
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    SocialSharing,Camera,File,WebView
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FileChooser,
+    SocialSharing,Camera,File,WebView,
   ],
   bootstrap: [AppComponent]
 })

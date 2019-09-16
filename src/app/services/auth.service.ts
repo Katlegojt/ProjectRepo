@@ -12,7 +12,15 @@ import { auth } from 'firebase';
 })
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth, private db: AngularFirestore, public navCtrl: NavController,  ) { }
+  constructor(public afAuth: AngularFireAuth, private db: AngularFirestore, public navCtrl: NavController,  ) {
+    afAuth.auth.onAuthStateChanged((user)=>{
+      if(user){
+        this.navCtrl.navigateRoot("/menu/chat");
+      }else{
+        this.navCtrl.navigateRoot("");
+      }
+    })
+   }
   user = {} as User;
 
 
@@ -30,6 +38,8 @@ export class AuthService {
 
       console.error(e);
     }
+
+    
   }
         // sign up
         signup(user: User) {
@@ -38,7 +48,8 @@ export class AuthService {
               username : user.username,
               email : user.email,
               gender : user.gender,
-              Bio : 'Enter a short bio of yourself'
+              Bio : 'Enter a short bio of yourself',
+              UserID: this.afAuth.auth.currentUser.uid
             });
 
             localStorage.setItem('userid', this.afAuth.auth.currentUser.uid);

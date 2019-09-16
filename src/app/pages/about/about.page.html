@@ -12,7 +12,13 @@
     
     
     <div class="container">
+   
         <img src={{img}} alt="Avatar" >
+       
+        <ion-button (click)="pickFile()"> <ion-icon name="folder" ></ion-icon></ion-button>
+        <ion-button (click)="pickImage()"><ion-icon name="camera"></ion-icon></ion-button>
+         <!-- <input type="file" (change)="pickfile2($event)"> -->
+
    <h3><b>{{user?.username}}</b></h3>
   </div>
   
@@ -27,9 +33,9 @@
         <ion-icon name="share"></ion-icon>
       </ion-fab-button>
       <ion-fab-list side="top">
-          <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
-          <ion-fab-button><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
-          <ion-fab-button><ion-icon (click)="sharingInsta(user.email)" name="logo-instagram"></ion-icon></ion-fab-button>
+          <ion-fab-button><ion-icon  name="logo-facebook"></ion-icon></ion-fab-button>
+          <ion-fab-button><ion-icon (click)="sharingTwitter()" name="logo-twitter"></ion-icon></ion-fab-button>
+          <ion-fab-button><ion-icon name="logo-instagram"></ion-icon></ion-fab-button>
         </ion-fab-list>
         
     </ion-fab>

@@ -17,6 +17,7 @@ export class ChatPage implements OnInit {
 
     this.uid = this.afAuth.auth.currentUser.uid;
     this.chatRef = this.firestore.collection('chats', ref => ref.orderBy('Timestamp')).valueChanges();
+    console.log(this.chatRef);
 
    }
 
