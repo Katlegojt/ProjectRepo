@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController, LoadingController, PopoverController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserService } from 'src/app/services/user.service';
-import { Router } from '@angular/router';
+
 import { User } from 'src/app/module/user';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
@@ -11,7 +11,8 @@ import { PopoverPage } from '../popover/popover.page';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import * as firebase from 'firebase';
 import { AngularFirestore } from '@angular/fire/firestore';
-
+import { AngularFireStorage,AngularFireUploadTask  } from '@angular/fire/storage';
+import { url } from 'inspector';
 
 @Component({
   selector: 'app-about',
@@ -23,8 +24,12 @@ export class AboutPage implements OnInit {
   user = {} as User;
   gender;
   imageUrl: string;
-  img
- selectedFile = null;
+  img;
+  imag;
+  urlPath = null;
+  uploadPercent;
+  var1: any;
+  selectedFile;
   constructor( private userS: UserService,
     private afAuth: AngularFireAuth, public navCtrl: NavController, private sSharing: SocialSharing,
     private popover: PopoverController,
@@ -33,9 +38,10 @@ export class AboutPage implements OnInit {
     private fc: FileChooser,
     private file: File,
     private camera: Camera,
-    private db: AngularFirestore) { }
+    private db: AngularFirestore,
+    private storage: AngularFireStorage) {this.var1= "https://firebasestorage.googleapis.com/v0/b/myproject-e6714.appspot.com/o/uploads%2Fprofile_%24%7Bid%7D?alt=media&token=13cf80cf-d7a4-4cd7-88f4-14343e6ec1b1"}
 
-
+//
   ngOnInit() {
 
 
@@ -66,9 +72,22 @@ export class AboutPage implements OnInit {
 
     popover.present( );
   }
-  pickfile2(event){
+  //Neo 5:13 AM
+  onUpload(event) {
+    this.selectedFile = <File>event.target.files[0];
+    console.log(event.target.files[0]);
+    const file = event.target.files[0];
+     this.uploadViaFileChooser(file);// call helper method
+ 
+     console.log("upload complete !");
+      
+     
+        
+    
+ 
+        
+       
 
-  this.selectedFile = <File>event.target.files[0];
   }
 
   //file chooser
@@ -79,14 +98,14 @@ export class AboutPage implements OnInit {
       this.file.resolveLocalFilesystemUrl(uri).then((newUri) => {
         alert(JSON.stringify(newUri))
 
-        // let dirPath = newUri.nativeURL;
-        // let dirPathSeg = dirPath.split('/')
-        // dirPathSeg.pop()
-        // dirPath = dirPathSeg.join('/')
+        let dirPath = newUri.nativeURL;
+        let dirPathSeg = dirPath.split('/')
+        dirPathSeg.pop()
+        dirPath = dirPathSeg.join('/')
        
-        // this.file.readAsArrayBuffer(dirPath, newUri.name).then(async (buffer) => {
-        //  await this.uploadImage(buffer, newUri.name);
-        // })
+        this.file.readAsArrayBuffer(dirPath, newUri.name).then(async (buffer) => {
+         await this.uploadImage(buffer, newUri.name);
+        })
         const blobInfo =  this.makeFileIntoBlob(newUri);
         this.uploadToFirebase(blobInfo);
 
@@ -97,7 +116,7 @@ export class AboutPage implements OnInit {
 
   //file upload to firebase
   async uploadImage(buffer, name) {
-
+    
     let blob = new Blob([buffer], { type: "image/jpeg" });
     let storage = firebase.storage().ref('images/' + name).put(blob).then((d ) => {
 
@@ -178,8 +197,44 @@ export class AboutPage implements OnInit {
           if (progress === 100) {
             fileRef.getDownloadURL().then(uri => {
               this.imageUrl = uri;
-              // this.db.collection('pics').add({ downloadURL: this.imageUrl, uid: this.afAuth.auth.currentUser.uid, })
+              this.db.collection('pics').add({ downloadURL: this.imageUrl, uid: this.afAuth.auth.currentUser.uid, })
               // console.log('profile', this.profileUser.key);
+              
+              console.log('downloadurl', uri);
+
+            });
+          }
+        },
+        _error => {
+          console.log(_error);
+          reject(_error);
+        },
+        () => {
+          // completion...
+          resolve(uploadTask.snapshot);
+        }
+      );
+    });
+  }
+  uploadViaFileChooser(_image) {
+    console.log('uploadToFirebase');
+    return new Promise((resolve, reject) => {
+      const fileRef = firebase.storage().ref('images/' + this.selectedFile.name);
+      const uploadTask = fileRef.put(_image);
+      uploadTask.on(
+        'state_changed',
+        (_snapshot: any) => {
+          console.log(
+            'snapshot progess ' +
+            (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100
+          );
+          const progress = (_snapshot.bytesTransferred / _snapshot.totalBytes) * 100;
+          if (progress === 100) {
+            fileRef.getDownloadURL().then(uri => {
+              this.imageUrl = uri;
+              this.db.collection('pics').add({ downloadURL: this.imageUrl, uid: this.afAuth.auth.currentUser.uid, })
+              // console.log('profile', this.profileUser.key);
+              
               console.log('downloadurl', uri);
 
             });

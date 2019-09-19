@@ -19,6 +19,8 @@ import { SocialSharing} from '@ionic-native/social-sharing/ngx';
 import { PopoverPageModule } from './pages/popover/popover.module';
 import { IonicStorageModule} from '@ionic/storage'
 import { WebView } from '@ionic-native/ionic-WebView/ngx';
+import { AngularFireStorage,AngularFireUploadTask  } from '@angular/fire/storage';
+
 
 
 const firebaseConfig = {
@@ -48,7 +50,7 @@ const firebaseConfig = {
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },FileChooser,
-    SocialSharing,Camera,File,WebView,
+    SocialSharing,Camera,File,WebView,AngularFireStorage
   ],
   bootstrap: [AppComponent]
 })
