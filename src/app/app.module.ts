@@ -19,7 +19,7 @@ import { SocialSharing} from '@ionic-native/social-sharing/ngx';
 import { PopoverPageModule } from './pages/popover/popover.module';
 import { IonicStorageModule} from '@ionic/storage'
 import { WebView } from '@ionic-native/ionic-WebView/ngx';
-import { AngularFireStorage,AngularFireUploadTask  } from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 

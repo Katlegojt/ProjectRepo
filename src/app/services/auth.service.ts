@@ -35,10 +35,8 @@ export class AuthService {
     });
     console.log(result);
     } catch (e) {
-
       console.error(e);
     }
-
     
   }
         // sign up
@@ -49,7 +47,8 @@ export class AuthService {
               email : user.email,
               gender : user.gender,
               Bio : 'Enter a short bio of yourself',
-              UserID: this.afAuth.auth.currentUser.uid
+              UserID: this.afAuth.auth.currentUser.uid,
+              profilepic: "",
             });
 
             localStorage.setItem('userid', this.afAuth.auth.currentUser.uid);

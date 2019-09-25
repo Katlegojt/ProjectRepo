@@ -1,9 +1,11 @@
 export interface User{
     
     key? : string;
+    downloadURL? : string;
+
+    email: string;
     username: string;
     gender: string;
-    email: string;
     password: string;
     Bio : string;
 

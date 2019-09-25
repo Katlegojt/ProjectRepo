@@ -9,18 +9,12 @@
 
 <ion-content> 
 
-    
-    
     <div class="container">
    
-        <img src={{var1}} alt="Avatar" ><br>
-       
-        <ion-button (click)="pickFile()"> <ion-icon name="folder" ></ion-icon></ion-button>
+    <img src={{user.profilepic}} alt="Avatar" ><br> 
+         <ion-button (click)="input.click()"><ion-icon name="folder" ></ion-icon></ion-button>
         <ion-button (click)="pickImage()"><ion-icon name="camera"></ion-icon></ion-button>
-       <!-- <div class="form-group" >
-          <input type="file" accept=".png,.jpg" (change)="onUpload($event)" >
-        </div> -->
-          <input type="file" (change)="onUpload($event)">
+          <input style="display: none" type="file" (change)="onUpload($event)" #input>
 
    <h3><b>{{user?.username}}</b></h3>
   </div>

@@ -23,4 +23,10 @@ user = {} as User;
     this.userDoc = this.db.doc<User>('users/'+ key);
     this.userDoc.update(user);
   }
+  profile(url, key) {
+  
+    this.db.doc('users/'+ key).update({
+      profilepic:url
+    })
+  }
 }

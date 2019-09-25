@@ -14,6 +14,7 @@ export class Page1Page implements OnInit {
   chatRef;
  
   userID;
+  
   name;
   uid;
   UserID1;
